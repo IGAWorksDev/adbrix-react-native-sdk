@@ -61,7 +61,7 @@ jobs:
         SLACK_WEBHOOK_TOKEN: ${{ secrets.SLACK_WEBHOOK_TOKEN }}
         SLACK_CHANNEL: ${{ secrets.SLACK_CHANNEL }}
       run: |
-        node scripts/slack-notifier-completion.mjs notify-deployment-completion >> "$GITHUB_OUTPUT"
+        node scripts/slack-notifier-completion.mjs notify-deployment-completion-from-issue >> "$GITHUB_OUTPUT"
         
     - name: Close issue if success
       if: success()
