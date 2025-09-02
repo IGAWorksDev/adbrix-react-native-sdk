@@ -1,0 +1,42 @@
+{
+  "name": "@igaworks/adbrix-react-native-sdk",
+  "version": "1.0.4",
+  "description": "This is Official Adbrix 2.0 SDK for React Native.",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "keywords": [
+    "react-native",
+    "ios",
+    "android",
+    "igaworks",
+    "adbrix"
+  ],
+  "source": "src/index",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IGAWorksDev/adbrix-react-native-sdk.git"
+  },
+  "author": "igaworks-dev <cs@igaworks.com> (https://www.igaworks.com/)",
+  "license": "COMMERCIAL",
+  "homepage": "https://adbrix.gitbook.io/developer-guide",
+  "devDependencies": {
+    "@react-native/eslint-config": "^0.78.0",
+    "@types/react": "^19.0.0",
+    "react": "19.0.0",
+    "react-native": "0.78.2",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.2.2"
+  },
+  "peerDependencies": {
+    "react-native": ">=0.60.0"
+  },
+  "workspaces": [
+    "example"
+  ],
+  "scripts": {
+    "clean": "rimraf lib && rimraf node_modules && (watchman watch-del-all || true)",
+    "reset": "npm run clean && npm install",
+    "deploy:dry-run": "npm publish --access public --dry-run",
+    "deploy": "npm publish --access public"
+  }
+}
