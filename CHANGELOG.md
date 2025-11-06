@@ -3,10 +3,9 @@
 
 
 
-## 1.1.0 (2025-11-06)
+## 1.1.1 (2025-11-06)
 
 ##### Added
-- SKAN [iOS]
 - Added support for SKAdNetwork (SKAN). [iOS]
 
 ##### Versions
@@ -63,7 +62,7 @@
 
 
 
-## 1.1.0 (2025-11-06)
+## 1.1.1 (2025-11-06)
 
 ##### 추가됨
 - SKAdNetwork(SKAN) 기능이 추가되었습니다. [iOS]
