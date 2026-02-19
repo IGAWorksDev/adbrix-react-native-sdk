@@ -109,7 +109,9 @@ export interface ABCurrencyType {
 }
 
 export interface ABConfigType {
+  /** @deprecated Use IOS_LOG_LEVEL instead. */
   IOS_LOG_ENABLE: string;
+  IOS_LOG_LEVEL: string;
   ANDROID_LOG_ENABLE: string;
   ANDROID_LOG_LEVEL: string;
   ANDROID_COLLECT_GOOGLE_ADVERTISING_ID: string;
@@ -137,6 +139,14 @@ export interface ABiOSTrackingTimeoutType {
   TIMEOUT_60: number;
   TIMEOUT_120: number;
   TIMEOUT_180: number;
+}
+
+export interface ABiOSLogLevelType {
+  VERBOSE: number;
+  DEBUG: number;
+  INFO: number;
+  WARN: number;
+  ERROR: number;
 }
 
 export interface ABInviteChannelType {
@@ -203,6 +213,7 @@ export declare const ABConfig: ABConfigType;
 export declare const ABDeepLinkResult: ABDeepLinkResultType;
 export declare const ABAndroidLogLevel: ABAndroidLogLevelType;
 export declare const ABiOSTrackingTimeout: ABiOSTrackingTimeoutType;
+export declare const ABiOSLogLevel: ABiOSLogLevelType;
 
 export type ABCurrencyValue = ABCurrencyType[keyof ABCurrencyType];
 export type ABInviteChannelValue = ABInviteChannelType[keyof ABInviteChannelType];

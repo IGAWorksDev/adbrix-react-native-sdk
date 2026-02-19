@@ -20,8 +20,17 @@ RCT_EXPORT_METHOD(initWithConfig:(NSDictionary *)params)
     NSString *applicationKey = params[@"applicationKey"];
     NSString *secretKey = params[@"secretKey"];
     NSDictionary *config = params[@"config"];
+    NSDictionary *normalizedConfig = config;
     
-    [AdbrixReactNative initWithAppKey:applicationKey secretKey:secretKey config:config];
+    if ([config isKindOfClass:[NSDictionary class]]) {
+        NSMutableDictionary *mutableConfig = [config mutableCopy];
+        if (mutableConfig[@"ABLogLevel"] != nil) {
+            [mutableConfig removeObjectForKey:@"setLog"];
+        }
+        normalizedConfig = [mutableConfig copy];
+    }
+    
+    [AdbrixReactNative initWithAppKey:applicationKey secretKey:secretKey config:normalizedConfig];
 }
 
 RCT_EXPORT_METHOD(logEvent:(NSDictionary *)params)

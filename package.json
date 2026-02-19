@@ -1,6 +1,6 @@
 {
   "name": "@igaworks/adbrix-react-native-sdk",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "This is Official Adbrix 2.0 SDK for React Native.",
   "main": "src/index.js",
   "types": "src/index.d.ts",
@@ -17,7 +17,7 @@
     "url": "git+https://github.com/IGAWorksDev/adbrix-react-native-sdk.git"
   },
   "author": "igaworks-dev <cs@igaworks.com> (https://www.igaworks.com/)",
-  "license": "COMMERCIAL",
+  "license": "MIT",
   "homepage": "https://adbrix.gitbook.io/developer-guide",
   "devDependencies": {
     "@react-native/eslint-config": "^0.78.0",
