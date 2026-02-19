@@ -130,7 +130,13 @@ export const ABSignUpChannel = {
 };
 
 export const ABConfig = {
+  /** @deprecated Use IOS_LOG_LEVEL instead. */
   IOS_LOG_ENABLE: 'setLog',
+  /**
+   * iOS log level config key.
+   * Use this key with one of ABiOSLogLevel values.
+   */
+  IOS_LOG_LEVEL: 'ABLogLevel',
   ANDROID_LOG_ENABLE: 'android_log_enable',
   ANDROID_LOG_LEVEL: 'android_log_level',
   ANDROID_COLLECT_GOOGLE_ADVERTISING_ID: 'android_collect_google_advertising_id',
@@ -160,6 +166,18 @@ export const ABiOSTrackingTimeout = {
   TIMEOUT_180: 180,
 };
 
+/**
+ * iOS log level values for ABConfig.IOS_LOG_LEVEL.
+ * Setting ABConfig.IOS_LOG_LEVEL with one of these values enables iOS SDK logging.
+ */
+export const ABiOSLogLevel = {
+  VERBOSE: 2,
+  DEBUG: 3,
+  INFO: 4,
+  WARN: 5,
+  ERROR: 6,
+};
+
 export default {
   ABEvent,
   ABEventProperty,
@@ -172,4 +190,5 @@ export default {
   ABDeepLinkResult,
   ABAndroidLogLevel,
   ABiOSTrackingTimeout,
-}; 
+  ABiOSLogLevel,
+};

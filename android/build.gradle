@@ -71,7 +71,7 @@ repositories {
 
 dependencies {
   implementation "com.facebook.react:react-native:+"
-  implementation 'com.igaworks.adbrix:android-sdk:3.0.7'
+  implementation 'com.igaworks.adbrix:android-sdk:3.0.10'
   implementation 'com.android.installreferrer:installreferrer:2.2'
   implementation 'com.google.android.gms:play-services-ads-identifier:18.2.0'
 }
