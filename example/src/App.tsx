@@ -15,55 +15,77 @@ import Adbrix, {
   ABAndroidLogLevel,
   ABProperty,
   ABItem,
-  ABPaymentMethod
+  ABPaymentMethod,
+  ABiOSLogLevel,
+  ABCurrency
 } from '@igaworks/adbrix-react-native-sdk';
+import { 
+  requestTrackingPermission, 
+  getTrackingStatus
+} from 'react-native-tracking-transparency';
 
 export default function App() {
+  const [attStatus, setAttStatus] = useState<string>('unknown');
 
   useEffect(() => {
-    init();
-  }, []);
-
-  const init = async () => {
     sdkInit();
-    requestTrackingAuthorization();
-  };
+  }, []);
 
   const sdkInit = () => {
     const config = {
-      [ABConfig.IOS_LOG_ENABLE]: true,
+      [ABConfig.IOS_LOG_LEVEL]: ABiOSLogLevel.VERBOSE,
       [ABConfig.ANDROID_LOG_ENABLE]: true,
       [ABConfig.ANDROID_LOG_LEVEL]: ABAndroidLogLevel.VERBOSE,
       [ABConfig.ANDROID_COLLECT_GOOGLE_ADVERTISING_ID]: true,
-      // [ABConfig.IOS_TRACKING_TIMEOUT]: ABiOSTrackingTimeout.TIMEOUT_60
     };
 
     Adbrix.initWithConfig({
-      applicationKey: "APPLICATION_KEY",
-      secretKey: "SECRET_KEY",
+      applicationKey: "YOUR_APPLICATION_KEY",
+      secretKey: "YOUR_SECRET_KEY",
       config: config,
     });
   };
 
-  const requestTrackingAuthorization = async () => {
-    if (Platform.OS === 'ios') {
-      // React Native에서는 react-native-permissions를 사용하거나
-      // 직접 ATT 권한을 요청하는 네이티브 모듈을 구현해야 합니다.
-      // 여기서는 간단히 허용되었다고 가정하고 호출합니다.
-      Alert.alert(
-        'ATT 권한 요청',
-        'iOS에서 앱 추적 투명성 권한을 요청합니다.',
-        [
-          {
-            text: '허용',
-            onPress: () => Adbrix.attAuthorized(true)
-          },
-          {
-            text: '거부',
-            onPress: () => Adbrix.attAuthorized(false)
-          }
-        ]
-      );
+  const handleRequestATT = async () => {
+    if (Platform.OS !== 'ios') {
+      Alert.alert('알림', 'ATT 권한 요청은 iOS에서만 사용 가능합니다.');
+      return;
+    }
+
+    const currentStatus = await getTrackingStatus();
+    
+    if (currentStatus === 'not-determined') {
+      const result = await requestTrackingPermission();
+      setAttStatus(result);
+      
+      switch (result) {
+        case 'authorized':
+          Adbrix.attAuthorized(true);
+          Alert.alert('ATT 권한', '추적 권한이 허용되었습니다.');
+          break;
+        case 'denied':
+          Adbrix.attAuthorized(false);
+          Alert.alert('ATT 권한', '추적 권한이 거부되었습니다.');
+          break;
+        case 'restricted':
+          Adbrix.attAuthorized(false);
+          Alert.alert('ATT 권한', '추적 권한이 제한되었습니다.');
+          break;
+        case 'unavailable':
+          Alert.alert('ATT 권한', 'ATT가 지원되지 않는 환경입니다.');
+          break;
+      }
+    } else if (currentStatus === 'authorized') {
+      setAttStatus('authorized');
+      Adbrix.attAuthorized(true);
+      Alert.alert('ATT 권한', '이미 추적 권한이 허용되어 있습니다.');
+    } else if (currentStatus === 'denied' || currentStatus === 'restricted') {
+      setAttStatus(currentStatus);
+      Adbrix.attAuthorized(false);
+      Alert.alert('ATT 권한', '추적 권한이 거부/제한되었습니다. 설정에서 변경 가능합니다.');
+    } else {
+      setAttStatus(currentStatus);
+      Alert.alert('ATT 권한', `현재 상태: ${currentStatus}`);
     }
   };
 
@@ -82,6 +104,7 @@ export default function App() {
       .price(5000.0)
       .discount(500.0)
       .quantity(5)
+      .currency(ABCurrency.KRW)
       .build();
     const items = [item];
     const properties = ABProperty
@@ -117,6 +140,17 @@ export default function App() {
         <View style={styles.header}>
           <Text style={styles.title}>Adbrix Demo</Text>
         </View>
+
+        {/* ATT 권한 요청 섹션 */}
+        {Platform.OS === 'ios' && (
+          <>
+            <Text style={styles.sectionTitle}>ATT 권한</Text>
+            <TouchableOpacity style={styles.attButton} onPress={handleRequestATT}>
+              <Text style={styles.buttonText}>ATT 권한 요청</Text>
+            </TouchableOpacity>
+            <Text style={styles.statusText}>상태: {attStatus}</Text>
+          </>
+        )}
 
         {/* LogEvent 섹션 */}
         <Text style={styles.sectionTitle}>LogEvent</Text>
@@ -197,6 +231,27 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.18,
     shadowRadius: 1.0,
+  },
+  attButton: {
+    backgroundColor: '#FF9800',
+    margin: 4,
+    marginHorizontal: 12,
+    padding: 12,
+    borderRadius: 6,
+    elevation: 1,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.18,
+    shadowRadius: 1.0,
+  },
+  statusText: {
+    fontSize: 12,
+    color: '#666',
+    marginHorizontal: 12,
+    marginBottom: 8,
   },
   buttonText: {
     color: '#ffffff',
