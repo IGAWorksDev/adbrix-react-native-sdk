@@ -1,5 +1,6 @@
 import Foundation
 import AdbrixSDK
+import UIKit
 
 @objc(AdbrixReactNative)
 public class AdbrixReactNative: NSObject, AdbrixDeferredDeepLinkDelegate {
