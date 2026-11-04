@@ -1,0 +1,1 @@
+../AdbrixReactNative.swift
