@@ -20,6 +20,18 @@ import java.util.List;
 /**
  * Adbrix Properties Builder 파싱 유틸리티 클래스
  * React Native에서 전달받은 Properties Builder 객체를 네이티브에서 사용할 수 있는 형태로 변환
+ * 
+ * SDK Version Compatibility: 4.1.0
+ * 
+ * This class is SDK-independent and handles data transformation between
+ * React Native's ReadableMap/ReadableArray and Java's Map/JSONObject.
+ * 
+ * Supported data types:
+ * - TypedValue: { value: any, type: 'string' | 'long' | 'double' | 'boolean' }
+ * - Items array: abx:items with nested TypedValue objects
+ * 
+ * Note: This parser does not directly depend on Adbrix SDK classes,
+ * ensuring compatibility across SDK version upgrades.
  */
 public final class AdbrixReactNativeParser {
     private static final String TAG = "AdbrixReactNativeParser";

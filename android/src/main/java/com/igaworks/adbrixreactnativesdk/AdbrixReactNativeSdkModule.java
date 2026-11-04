@@ -18,6 +18,21 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Adbrix React Native SDK Bridge Module
+ * 
+ * SDK Version Compatibility: 4.1.0
+ * 
+ * This module bridges React Native JavaScript calls to the native Adbrix Android SDK.
+ * 
+ * SDK API Usage:
+ * - AdbrixBridge: getInstance(), init(), startSession(), endSession(), 
+ *                 registerAdbrixDeferredDeepLinkListener(), blockDeferredDeepLinkLaunch()
+ * - Adbrix: getInstance(), logEvent(), enableSDK(), disableSDK()
+ * 
+ * Note: If the SDK API changes in future versions, adapter methods should be added
+ * to this class to maintain JavaScript API compatibility (Requirement 5.3).
+ */
 public class AdbrixReactNativeSdkModule extends ReactContextBaseJavaModule implements LifecycleEventListener{
 
     public static final String NAME = "Adbrix";
@@ -145,7 +160,7 @@ public class AdbrixReactNativeSdkModule extends ReactContextBaseJavaModule imple
     public void blockDeferredDeepLinkLaunch(Promise promise) {
         Log.d(TAG, "🔗 blockDeferredDeepLinkLaunch");
 
-        adbrixBridge.blockDeferredDeepLinkLaunch(new AdbrixBridge.AdbrixDeferredDeepLinkCallback() {
+        adbrixBridge.blockDeferredDeepLinkLaunch(getReactApplicationContext(), new AdbrixBridge.AdbrixDeferredDeepLinkCallback() {
             @Override
             public void onCallback(int result, String deepLink) {
                 HashMap<Object, Object> map = new HashMap<>();
