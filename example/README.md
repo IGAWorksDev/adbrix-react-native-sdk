@@ -82,6 +82,72 @@ You've successfully run and modified your React Native App. :partying_face:
 - If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
 - If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
 
+## iOS Dependency Manager Testing
+
+이 Example App은 Swift Package Manager(SPM)와 CocoaPods 두 가지 iOS 의존성 관리자를 모두 테스트할 수 있도록 구성되어 있다.
+
+### Prerequisites
+
+- Node.js >= 22.13.0
+- Xcode 14.0+
+- CocoaPods (CocoaPods 모드 테스트용)
+
+### SPM Mode Testing
+
+SPM 모드로 전환하여 빌드 테스트:
+
+```bash
+cd example/ios
+
+# SPM 모드로 전환 (CocoaPods 제거 후 SPM 설정)
+npx react-native spm --deintegrate
+npx react-native spm
+
+# 빌드 테스트
+xcodebuild -workspace AdbrixReactNativeSdkExample.xcworkspace \
+  -scheme AdbrixReactNativeSdkExample \
+  -configuration Debug \
+  -sdk iphonesimulator \
+  -destination 'platform=iOS Simulator,name=iPhone 16' \
+  build
+```
+
+### CocoaPods Mode Testing
+
+CocoaPods 모드로 전환하여 빌드 테스트:
+
+```bash
+cd example/ios
+
+# CocoaPods 모드로 복원 (SPM 제거 후 CocoaPods 설정)
+npx react-native spm deinit
+pod install
+
+# 빌드 테스트
+xcodebuild -workspace AdbrixReactNativeSdkExample.xcworkspace \
+  -scheme AdbrixReactNativeSdkExample \
+  -configuration Debug \
+  -sdk iphonesimulator \
+  -destination 'platform=iOS Simulator,name=iPhone 16' \
+  build
+```
+
+### Dynamic Framework Linking (Alternative)
+
+Podfile의 USE_FRAMEWORKS 환경변수를 사용하여 동적 프레임워크 링킹 모드로 CocoaPods를 사용할 수도 있다:
+
+```bash
+cd example/ios
+USE_FRAMEWORKS=dynamic pod install
+```
+
+### Verification
+
+빌드 성공 후 다음 항목을 확인:
+- SPM 모드: AdbrixSDK.xcframework가 정상적으로 링크되었는지 확인
+- CocoaPods 모드: adbrix2.0 pod가 정상적으로 설치되었는지 확인
+- Example App 실행 시 Adbrix SDK 초기화 로그 출력 여부
+
 # Troubleshooting
 
 If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
