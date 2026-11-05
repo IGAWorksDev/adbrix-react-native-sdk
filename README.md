@@ -1,6 +1,6 @@
 # Adbrix React Native SDK Monorepo
 
-This repository contains the Adbrix React Native SDK and example application.
+This repository contains the Adbrix React Native SDK and example applications.
 
 ## Structure
 
@@ -8,8 +8,11 @@ This repository contains the Adbrix React Native SDK and example application.
 root/
 ├── sdk/              # SDK source (npm publish from here)
 │   └── Package.swift # SPM manifest
-├── example/          # Example application
-└── README.md
+├── example/          # SPM example app (iOS)
+├── example_pods/     # CocoaPods example app (iOS)
+└── shared-app/       # Shared App code (symlinked)
+    └── src/
+        └── App.tsx
 ```
 
 ## SDK Documentation
@@ -18,19 +21,20 @@ See [sdk/README.md](./sdk/README.md) for SDK usage documentation.
 
 ## Development
 
-### Install dependencies
-
-```bash
-cd sdk && npm install
-cd example && npm install
-```
-
-### Run example app
+### SPM Example (recommended)
 
 ```bash
 cd example
-npm run ios      # iOS with SPM
-npm run android  # Android
+npm install
+npm run ios
+```
+
+### CocoaPods Example
+
+```bash
+cd example_pods
+npm install
+npm run ios
 ```
 
 ## Publishing
