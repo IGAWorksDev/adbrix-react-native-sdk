@@ -7,8 +7,9 @@ This repository contains the Adbrix React Native SDK and example application.
 ```
 root/
 ├── sdk/              # SDK source (npm publish from here)
+│   └── Package.swift # SPM manifest
 ├── example/          # Example application
-└── Package.swift     # SPM manifest (references sdk/ios)
+└── README.md
 ```
 
 ## SDK Documentation

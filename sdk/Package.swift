@@ -24,7 +24,7 @@ let package = Package(
             dependencies: [
                 .product(name: "AdbrixSDK", package: "adbrix-ios-sdk")
             ],
-            path: "sdk/ios",
+            path: "ios",
             exclude: [
                 // Exclude Objective-C files (handled by RN build system)
                 "AdbrixPropertiesParser.h",
