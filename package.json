@@ -36,9 +36,6 @@
   "swiftpmConfig": {
     "name": "AdbrixReactNativeSdk"
   },
-  "workspaces": [
-    "example"
-  ],
   "scripts": {
     "clean": "rimraf lib && rimraf node_modules && (watchman watch-del-all || true)",
     "reset": "npm run clean && npm install",
