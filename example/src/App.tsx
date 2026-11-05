@@ -39,14 +39,14 @@ export default function App() {
       [ABConfig.ANDROID_COLLECT_GOOGLE_ADVERTISING_ID]: true,
     };
 
-    // Adbrix.initWithConfig({
-    //   applicationKey: "YOUR_APPLICATION_KEY",
-    //   secretKey: "YOUR_SECRET_KEY",
-    //   config: config,
-    // });
+    // Replace with your Adbrix credentials
+    // You can set these via environment variables or a local config file
+    const applicationKey = process.env.ADBRIX_APP_KEY || 'YOUR_APPLICATION_KEY';
+    const secretKey = process.env.ADBRIX_SECRET_KEY || 'YOUR_SECRET_KEY';
+
     Adbrix.initWithConfig({
-      applicationKey: "YOUR_APPLICATION_KEY",
-      secretKey: "YOUR_SECRET_KEY",
+      applicationKey,
+      secretKey,
       config: config,
     });
   };
