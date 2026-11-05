@@ -6,21 +6,21 @@ This repository contains the Adbrix React Native SDK and example application.
 
 ```
 root/
-├── packages/sdk/     # SDK source (npm publish from here)
+├── sdk/              # SDK source (npm publish from here)
 ├── example/          # Example application
-└── Package.swift     # SPM manifest (references packages/sdk/ios)
+└── Package.swift     # SPM manifest (references sdk/ios)
 ```
 
 ## SDK Documentation
 
-See [packages/sdk/README.md](./packages/sdk/README.md) for SDK usage documentation.
+See [sdk/README.md](./sdk/README.md) for SDK usage documentation.
 
 ## Development
 
 ### Install dependencies
 
 ```bash
-cd packages/sdk && npm install
+cd sdk && npm install
 cd example && npm install
 ```
 
@@ -34,9 +34,9 @@ npm run android  # Android
 
 ## Publishing
 
-SDK is published from `packages/sdk` directory:
+SDK is published from `sdk` directory:
 
 ```bash
-cd packages/sdk
+cd sdk
 npm publish --access public
 ```

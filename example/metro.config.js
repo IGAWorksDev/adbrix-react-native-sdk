@@ -2,7 +2,7 @@ const path = require('path');
 const { getDefaultConfig, mergeConfig } = require('@react-native/metro-config');
 
 // SDK is in packages/sdk subdirectory
-const sdkRoot = path.resolve(__dirname, '../packages/sdk');
+const sdkRoot = path.resolve(__dirname, '../sdk');
 
 /**
  * Metro configuration for separated example app

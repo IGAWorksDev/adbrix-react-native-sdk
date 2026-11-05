@@ -15,7 +15,7 @@
     "ios:clean": "./scripts/clean.sh"
   },
   "dependencies": {
-    "@igaworks/adbrix-react-native-sdk": "file:../packages/sdk",
+    "@igaworks/adbrix-react-native-sdk": "file:../sdk",
     "react": "19.3.0",
     "react-native": "0.88.1",
     "react-native-tracking-transparency": "^0.1.2"

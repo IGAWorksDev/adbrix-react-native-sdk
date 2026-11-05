@@ -9,7 +9,7 @@ module.exports = {
   },
   dependencies: {
     '@igaworks/adbrix-react-native-sdk': {
-      root: path.join(__dirname, '../packages/sdk'),
+      root: path.join(__dirname, '../sdk'),
       platforms: {
         ios: {},
         android: {},
