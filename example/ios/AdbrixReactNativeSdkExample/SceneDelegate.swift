@@ -36,6 +36,17 @@ class SceneDelegate: RCTDefaultReactNativeFactoryDelegate, UIWindowSceneDelegate
       in: window,
       connectionOptions: connectionOptions
     )
+    
+    // MARK: - Cold Start Deep Link Handling
+    // Handle deep link when app is launched from terminated state
+    if let url = connectionOptions.urlContexts.first?.url {
+      AdbrixReactNative.deepLinkOpen(url: url)
+    }
+    
+    // Handle universal link when app is launched from terminated state
+    if let userActivity = connectionOptions.userActivities.first(where: { $0.activityType == NSUserActivityTypeBrowsingWeb }) {
+      AdbrixReactNative.deepLinkOpen(userActivity: userActivity)
+    }
   }
 
   // MARK: - URL Handling (Deep Link)
