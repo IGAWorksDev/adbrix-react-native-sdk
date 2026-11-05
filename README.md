@@ -1,16 +1,42 @@
-# Adbrix React Native SDK
+# Adbrix React Native SDK Monorepo
 
-This repository contains the the javascript interface and native React Native functionality for the React Native plugins derived from the Adbrix Android and iOS SDKs.
+This repository contains the Adbrix React Native SDK and example application.
 
-- [Adbrix User Guide](https://adbrix.gitbook.io/user-guide)
-- [Adbrix Developer Guide](https://adbrix.gitbook.io/developer-guide/platform/reactnative)
+## Structure
 
-## Dependencies
+```
+root/
+├── packages/sdk/     # SDK source (npm publish from here)
+├── example/          # Example application
+└── Package.swift     # SPM manifest (references packages/sdk/ios)
+```
 
-### Android
-- [com.igaworks.adbrix:android-sdk](./CHANGELOG.md)
-- com.android.installreferrer:installreferrer:2.2
-- com.google.android.gms:play-services-ads-identifier:18.2.0
+## SDK Documentation
 
-### iOS
-- [adbrix2.0](./CHANGELOG.md)
+See [packages/sdk/README.md](./packages/sdk/README.md) for SDK usage documentation.
+
+## Development
+
+### Install dependencies
+
+```bash
+cd packages/sdk && npm install
+cd example && npm install
+```
+
+### Run example app
+
+```bash
+cd example
+npm run ios      # iOS with SPM
+npm run android  # Android
+```
+
+## Publishing
+
+SDK is published from `packages/sdk` directory:
+
+```bash
+cd packages/sdk
+npm publish --access public
+```
