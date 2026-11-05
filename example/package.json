@@ -4,15 +4,16 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android",
-    "ios": "rm -rf ios/build && npx react-native spm add --yes && react-native run-ios",
-    "ios:run": "react-native run-ios",
+    "ios": "react-native run-ios",
+    "ios:spm": "rm -rf ios/build ios/Pods ios/*.xcworkspace ios/Podfile.lock && cd ios && pod deintegrate 2>/dev/null; cd .. && npx react-native spm add --yes && cd ios && xcodebuild -project AdbrixReactNativeSdkExample.xcodeproj -scheme AdbrixReactNativeSdkExample -configuration Debug -destination 'platform=iOS Simulator,name=iPhone 16' -derivedDataPath build",
+    "ios:spm:setup": "npx react-native spm add --yes",
+    "ios:spm:scaffold": "npx react-native spm scaffold",
+    "ios:pods": "./scripts/use-pods.sh && react-native run-ios",
+    "ios:pods:setup": "./scripts/use-pods.sh",
+    "ios:clean": "./scripts/clean.sh",
     "start": "react-native start",
     "build:android": "react-native build-android --extra-params \"--no-daemon --console=plain -PreactNativeArchitectures=arm64-v8a\"",
-    "build:ios": "react-native build-ios --scheme AdbrixReactNativeSdkExample --mode Debug --extra-params \"-sdk iphonesimulator CC=clang CPLUSPLUS=clang++ LD=clang LDPLUSPLUS=clang++ GCC_OPTIMIZATION_LEVEL=0 GCC_PRECOMPILE_PREFIX_HEADER=YES ASSETCATALOG_COMPILER_OPTIMIZATION=time DEBUG_INFORMATION_FORMAT=dwarf COMPILER_INDEX_STORE_ENABLE=NO\"",
-    "ios:spm": "./scripts/use-spm.sh",
-    "ios:spm:scaffold": "npx react-native spm scaffold",
-    "ios:pods": "./scripts/use-pods.sh",
-    "ios:clean": "./scripts/clean.sh"
+    "build:ios": "react-native build-ios --scheme AdbrixReactNativeSdkExample --mode Debug --extra-params \"-sdk iphonesimulator CC=clang CPLUSPLUS=clang++ LD=clang LDPLUSPLUS=clang++ GCC_OPTIMIZATION_LEVEL=0 GCC_PRECOMPILE_PREFIX_HEADER=YES ASSETCATALOG_COMPILER_OPTIMIZATION=time DEBUG_INFORMATION_FORMAT=dwarf COMPILER_INDEX_STORE_ENABLE=NO\""
   },
   "dependencies": {
     "@igaworks/adbrix-react-native-sdk": "file:../sdk",
