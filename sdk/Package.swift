@@ -2,12 +2,12 @@
 import PackageDescription
 
 let package = Package(
-    name: "AdbrixReactNativeSdk",
+    name: "adbrix-react-native-sdk",
     platforms: [.iOS(.v12)],
     products: [
         .library(
             name: "AdbrixReactNativeSdk",
-            targets: ["AdbrixReactNativeSdk"]
+            targets: ["adbrix_react_native_sdk"]
         )
     ],
     dependencies: [
@@ -20,7 +20,7 @@ let package = Package(
         // Swift-only target for SPM compatibility
         // Objective-C bridge files are handled by React Native's build system
         .target(
-            name: "AdbrixReactNativeSdk",
+            name: "adbrix_react_native_sdk",
             dependencies: [
                 .product(name: "AdbrixSDK", package: "adbrix-ios-sdk")
             ],

@@ -22,7 +22,7 @@ import Adbrix, {
 import { 
   requestTrackingPermission, 
   getTrackingStatus
-} from 'react-native-tracking-transparency';
+} from './TrackingTransparency';
 import { AdbrixConfig } from './config';
 
 export default function App() {

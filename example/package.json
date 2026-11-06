@@ -4,24 +4,23 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android",
-    "ios": "rm -rf ios/build ios/Pods ios/*.xcworkspace ios/Podfile.lock && cd ios && pod deintegrate 2>/dev/null; cd .. && npx react-native spm add --yes && cd ios && xcodebuild -project AdbrixReactNativeSdkExample.xcodeproj -scheme AdbrixReactNativeSdkExample -configuration Debug -destination 'platform=iOS Simulator,name=iPhone 16' -derivedDataPath build",
+    "ios": "rm -rf ios/build ios/Pods ios/*.xcworkspace ios/Podfile.lock && cd ios && pod deintegrate 2>/dev/null; cd .. && npx react-native spm add --yes && cd ios && xcodebuild -project AdbrixReactNativeSdkExample.xcodeproj -scheme AdbrixReactNativeSdkExample -configuration Debug -destination 'platform=iOS Simulator,name=iPhone 17' -derivedDataPath build",
     "ios:setup": "npx react-native spm add --yes",
     "ios:clean": "rm -rf ios/build",
     "start": "react-native start",
     "build:android": "react-native build-android --extra-params \"--no-daemon --console=plain -PreactNativeArchitectures=arm64-v8a\"",
-    "build:ios": "cd ios && xcodebuild -project AdbrixReactNativeSdkExample.xcodeproj -scheme AdbrixReactNativeSdkExample -configuration Debug -destination 'platform=iOS Simulator,name=iPhone 16' -derivedDataPath build"
+    "build:ios": "cd ios && xcodebuild -project AdbrixReactNativeSdkExample.xcodeproj -scheme AdbrixReactNativeSdkExample -configuration Debug -destination 'platform=iOS Simulator,name=iPhone 17' -derivedDataPath build"
   },
   "dependencies": {
     "@igaworks/adbrix-react-native-sdk": "file:../sdk",
     "react": "19.3.0",
-    "react-native": "0.88.1",
-    "react-native-tracking-transparency": "^0.1.2"
+    "react-native": "0.88.1"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
     "@babel/preset-env": "^7.25.3",
     "@babel/runtime": "^7.25.0",
-    "@react-native-community/cli": "20.2.0",
+    "@react-native-community/cli": "^20.2.0",
     "@react-native-community/cli-platform-android": "20.2.0",
     "@react-native-community/cli-platform-ios": "20.2.0",
     "@react-native/babel-preset": "0.88.0",

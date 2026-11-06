@@ -1,0 +1,12 @@
+# This Podfile exists only for React Native CLI compatibility.
+# This project uses Swift Package Manager (SPM) for dependencies.
+# Do NOT run 'pod install' - it will fail as this is an SPM-only project.
+
+# Workspace configuration
+workspace 'AdbrixReactNativeSdkExample'
+project 'AdbrixReactNativeSdkExample.xcodeproj'
+
+target 'AdbrixReactNativeSdkExample' do
+  platform :ios, '15.1'
+  # Dependencies are managed via SPM, not CocoaPods
+end

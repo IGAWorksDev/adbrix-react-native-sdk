@@ -14,8 +14,7 @@
   "dependencies": {
     "@igaworks/adbrix-react-native-sdk": "file:../sdk",
     "react": "19.3.0",
-    "react-native": "0.88.1",
-    "react-native-tracking-transparency": "^0.1.2"
+    "react-native": "0.88.1"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
