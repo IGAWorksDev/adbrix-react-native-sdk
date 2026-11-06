@@ -3,7 +3,7 @@ import React_RCTAppDelegate
 import ReactAppDependencyProvider
 import UIKit
 
-import AdbrixReactNativeSdk
+import adbrix_react_native_sdk
 
 class SceneDelegate: RCTDefaultReactNativeFactoryDelegate, UIWindowSceneDelegate {
   var window: UIWindow?
