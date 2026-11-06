@@ -4,12 +4,13 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android",
-    "ios": "rm -rf ios/build ios/Pods ios/*.xcworkspace ios/Podfile.lock && cd ios && pod deintegrate 2>/dev/null; cd .. && npx react-native spm add --yes && cd ios && xcodebuild -project AdbrixReactNativeSdkExample.xcodeproj -scheme AdbrixReactNativeSdkExample -configuration Debug -destination 'platform=iOS Simulator,name=iPhone 17' -derivedDataPath build",
-    "ios:setup": "npx react-native spm add --yes",
+    "ios": "npm run ios:setup && npm run ios:build:sim && (npx react-native start &) && sleep 5 && xcrun simctl install booted ios/build/Build/Products/Debug-iphonesimulator/AdbrixReactNativeSdkExample.app && xcrun simctl launch booted igaworks.adbrixreactnativesdk.example",
+    "ios:setup": "rm -rf ios/build && npx react-native spm add --yes",
     "ios:clean": "rm -rf ios/build",
+    "ios:build:sim": "cd ios && xcodebuild -project AdbrixReactNativeSdkExample.xcodeproj -scheme AdbrixReactNativeSdkExample -configuration Debug -sdk iphonesimulator -derivedDataPath build build",
     "start": "react-native start",
     "build:android": "react-native build-android --extra-params \"--no-daemon --console=plain -PreactNativeArchitectures=arm64-v8a\"",
-    "build:ios": "cd ios && xcodebuild -project AdbrixReactNativeSdkExample.xcodeproj -scheme AdbrixReactNativeSdkExample -configuration Debug -destination 'platform=iOS Simulator,name=iPhone 17' -derivedDataPath build"
+    "build:ios": "cd ios && xcodebuild -project AdbrixReactNativeSdkExample.xcodeproj -scheme AdbrixReactNativeSdkExample -configuration Debug -destination 'generic/platform=iOS' build"
   },
   "dependencies": {
     "@igaworks/adbrix-react-native-sdk": "file:../sdk",
