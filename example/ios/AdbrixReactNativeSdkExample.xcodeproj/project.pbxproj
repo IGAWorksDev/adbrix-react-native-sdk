@@ -16,6 +16,8 @@
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		94F7C9B714A718310DA6BE9C /* ReactHeaders in Frameworks */ = {isa = PBXBuildFile; productRef = 512EBECF5434FD7A6AF7C967 /* ReactHeaders */; };
 		A1B2C3D4E5F60788009ABCDE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60789009ABCDE /* SceneDelegate.swift */; };
+		ABXRN001A68108700A75B9A /* AdbrixReactNativeSdk.m in Sources */ = {isa = PBXBuildFile; fileRef = ABXRN002A68108700A75B9A /* AdbrixReactNativeSdk.m */; };
+		ABXPP001A68108700A75B9A /* AdbrixPropertiesParser.m in Sources */ = {isa = PBXBuildFile; fileRef = ABXPP002A68108700A75B9A /* AdbrixPropertiesParser.m */; };
 		CA602612236FEBACFC42240E /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
 		D6BD17EA9023C9F39246B71F /* Autolinked in Frameworks */ = {isa = PBXBuildFile; productRef = 3AFDEFB917B01458307FDE0A /* Autolinked */; };
 		TTOBJC001A68108700A75B9A /* TrackingTransparency.m in Sources */ = {isa = PBXBuildFile; fileRef = TTOBJC002A68108700A75B9A /* TrackingTransparency.m */; };
@@ -31,6 +33,10 @@
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = AdbrixReactNativeSdkExample/AppDelegate.swift; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = AdbrixReactNativeSdkExample/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A1B2C3D4E5F60789009ABCDE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SceneDelegate.swift; path = AdbrixReactNativeSdkExample/SceneDelegate.swift; sourceTree = "<group>"; };
+		ABXRN002A68108700A75B9A /* AdbrixReactNativeSdk.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AdbrixReactNativeSdk.m; path = AdbrixReactNativeSdkExample/AdbrixReactNativeSdk.m; sourceTree = "<group>"; };
+		ABXRN003A68108700A75B9A /* AdbrixReactNativeSdk.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AdbrixReactNativeSdk.h; path = AdbrixReactNativeSdkExample/AdbrixReactNativeSdk.h; sourceTree = "<group>"; };
+		ABXPP002A68108700A75B9A /* AdbrixPropertiesParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AdbrixPropertiesParser.m; path = AdbrixReactNativeSdkExample/AdbrixPropertiesParser.m; sourceTree = "<group>"; };
+		ABXPP003A68108700A75B9A /* AdbrixPropertiesParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AdbrixPropertiesParser.h; path = AdbrixReactNativeSdkExample/AdbrixPropertiesParser.h; sourceTree = "<group>"; };
 		TTOBJC002A68108700A75B9A /* TrackingTransparency.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TrackingTransparency.m; path = AdbrixReactNativeSdkExample/TrackingTransparency.m; sourceTree = "<group>"; };
 		TTSWIFT002A68108700A75B9A /* TrackingTransparency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TrackingTransparency.swift; path = AdbrixReactNativeSdkExample/TrackingTransparency.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -58,6 +64,10 @@
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				761780EC2CA45674006654EE /* AppDelegate.swift */,
 				A1B2C3D4E5F60789009ABCDE /* SceneDelegate.swift */,
+				ABXRN003A68108700A75B9A /* AdbrixReactNativeSdk.h */,
+				ABXRN002A68108700A75B9A /* AdbrixReactNativeSdk.m */,
+				ABXPP003A68108700A75B9A /* AdbrixPropertiesParser.h */,
+				ABXPP002A68108700A75B9A /* AdbrixPropertiesParser.m */,
 				TTSWIFT002A68108700A75B9A /* TrackingTransparency.swift */,
 				TTOBJC002A68108700A75B9A /* TrackingTransparency.m */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
@@ -253,6 +263,8 @@
 			files = (
 				761780ED2CA45674006654EE /* AppDelegate.swift in Sources */,
 				A1B2C3D4E5F60788009ABCDE /* SceneDelegate.swift in Sources */,
+				ABXRN001A68108700A75B9A /* AdbrixReactNativeSdk.m in Sources */,
+				ABXPP001A68108700A75B9A /* AdbrixPropertiesParser.m in Sources */,
 				TTSWIFT001A68108700A75B9A /* TrackingTransparency.swift in Sources */,
 				TTOBJC001A68108700A75B9A /* TrackingTransparency.m in Sources */,
 			);
