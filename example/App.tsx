@@ -26,7 +26,6 @@ import {
 import { AdbrixConfig } from './src/config';
 
 export default function App() {
-  const [sdkVersion, setSdkVersion] = useState<string>('unknown');
   const [attStatus, setAttStatus] = useState<string>('unknown');
 
   useEffect(() => {
@@ -45,13 +44,6 @@ export default function App() {
       applicationKey: AdbrixConfig.applicationKey,
       secretKey: AdbrixConfig.secretKey,
       config: config,
-    });
-
-    // Get SDK version for verification
-    Adbrix.getSDKVersion().then((version) => {
-      setSdkVersion(version);
-    }).catch(() => {
-      setSdkVersion('error');
     });
   };
 
@@ -149,7 +141,6 @@ export default function App() {
       <ScrollView style={styles.container}>
         <View style={styles.header}>
           <Text style={styles.title}>Adbrix SDK Example</Text>
-          <Text style={styles.versionText}>SDK Version: {sdkVersion}</Text>
           <Text style={styles.platformText}>Platform: {Platform.OS}</Text>
         </View>
 
@@ -158,7 +149,7 @@ export default function App() {
         <View style={styles.infoBox}>
           <Text style={styles.infoText}>
             Build Type: SPM{'\n'}
-            Expected iOS SDK: 3.2.4
+            iOS Native SDK: 3.2.4
           </Text>
         </View>
 
@@ -213,11 +204,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#ffffff',
     marginBottom: 8,
-  },
-  versionText: {
-    fontSize: 14,
-    color: '#ffffff',
-    marginBottom: 4,
   },
   platformText: {
     fontSize: 12,
