@@ -19,6 +19,10 @@ import Adbrix, {
   ABiOSLogLevel,
   ABCurrency
 } from '@igaworks/adbrix-react-native-sdk';
+import { 
+  requestTrackingPermission, 
+  getTrackingStatus
+} from './src/TrackingTransparency';
 
 // TODO: Replace with your actual credentials
 const AdbrixConfig = {
@@ -28,6 +32,7 @@ const AdbrixConfig = {
 
 export default function App() {
   const [sdkVersion, setSdkVersion] = useState<string>('unknown');
+  const [attStatus, setAttStatus] = useState<string>('unknown');
 
   useEffect(() => {
     sdkInit();
@@ -53,6 +58,49 @@ export default function App() {
     }).catch(() => {
       setSdkVersion('error');
     });
+  };
+
+  const handleRequestATT = async () => {
+    if (Platform.OS !== 'ios') {
+      Alert.alert('Info', 'ATT permission request is only available on iOS.');
+      return;
+    }
+
+    const currentStatus = await getTrackingStatus();
+    
+    if (currentStatus === 'not-determined') {
+      const result = await requestTrackingPermission();
+      setAttStatus(result);
+      
+      switch (result) {
+        case 'authorized':
+          Adbrix.attAuthorized(true);
+          Alert.alert('ATT', 'Tracking permission authorized.');
+          break;
+        case 'denied':
+          Adbrix.attAuthorized(false);
+          Alert.alert('ATT', 'Tracking permission denied.');
+          break;
+        case 'restricted':
+          Adbrix.attAuthorized(false);
+          Alert.alert('ATT', 'Tracking permission restricted.');
+          break;
+        case 'unavailable':
+          Alert.alert('ATT', 'ATT is not available on this device.');
+          break;
+      }
+    } else if (currentStatus === 'authorized') {
+      setAttStatus('authorized');
+      Adbrix.attAuthorized(true);
+      Alert.alert('ATT', 'Tracking permission already authorized.');
+    } else if (currentStatus === 'denied' || currentStatus === 'restricted') {
+      setAttStatus(currentStatus);
+      Adbrix.attAuthorized(false);
+      Alert.alert('ATT', `Tracking permission ${currentStatus}. Change in Settings.`);
+    } else {
+      setAttStatus(currentStatus);
+      Alert.alert('ATT', `Current status: ${currentStatus}`);
+    }
   };
 
   // Event Handler Functions
@@ -115,9 +163,20 @@ export default function App() {
         <View style={styles.infoBox}>
           <Text style={styles.infoText}>
             Build Type: SPM{'\n'}
-            Expected Version: {Platform.OS === 'ios' ? '3.2.4' : 'N/A'}
+            Expected iOS SDK: 3.2.4
           </Text>
         </View>
+
+        {/* ATT Section (iOS only) */}
+        {Platform.OS === 'ios' && (
+          <>
+            <Text style={styles.sectionTitle}>ATT Permission</Text>
+            <TouchableOpacity style={styles.attButton} onPress={handleRequestATT}>
+              <Text style={styles.buttonText}>Request ATT Permission</Text>
+            </TouchableOpacity>
+            <Text style={styles.statusText}>Status: {attStatus}</Text>
+          </>
+        )}
 
         {/* LogEvent Section */}
         <Text style={styles.sectionTitle}>LogEvent Tests</Text>
@@ -187,6 +246,24 @@ const styles = StyleSheet.create({
     fontSize: 13,
     color: '#1565c0',
     lineHeight: 20,
+  },
+  attButton: {
+    backgroundColor: '#FF9800',
+    marginVertical: 6,
+    marginHorizontal: 16,
+    padding: 14,
+    borderRadius: 8,
+    elevation: 2,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
+  },
+  statusText: {
+    fontSize: 12,
+    color: '#666',
+    marginHorizontal: 16,
+    marginBottom: 8,
   },
   button: {
     backgroundColor: '#2196F3',

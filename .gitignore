@@ -336,7 +336,6 @@ Package.resolved
 .kiro/
 
 # Local example projects (not tracked)
-example_old/
 example_pods/
 shared-app/
 
