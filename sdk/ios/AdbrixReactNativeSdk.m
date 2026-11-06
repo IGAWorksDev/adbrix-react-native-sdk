@@ -1,24 +1,6 @@
 #import "AdbrixReactNativeSdk.h"
 #import "AdbrixPropertiesParser.h"
-
-#if __has_include(<AdbrixSDK/AdbrixSDK.h>)
-#import <AdbrixSDK/AdbrixSDK.h>
-#elif __has_include("AdbrixSDK/AdbrixSDK.h")
-#import "AdbrixSDK/AdbrixSDK.h"
-#else
-@import AdbrixSDK;
-#endif
-
-// Swift bridging header - module name varies by build system
-#if defined(SPM_BUILD)
-#import "AdbrixReactNativeSdk-Swift.h"
-#elif __has_include("adbrix_react_native_sdk-Swift.h")
-#import "adbrix_react_native_sdk-Swift.h"
-#elif __has_include(<adbrix_react_native_sdk/adbrix_react_native_sdk-Swift.h>)
-#import <adbrix_react_native_sdk/adbrix_react_native_sdk-Swift.h>
-#else
-#import "AdbrixReactNativeSdk-Swift.h"
-#endif
+#import "AdbrixReactNative.h"
 
 @implementation AdbrixReactNativeSdk
 RCT_EXPORT_MODULE(Adbrix)

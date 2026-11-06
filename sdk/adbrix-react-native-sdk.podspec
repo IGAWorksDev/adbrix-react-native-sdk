@@ -13,7 +13,9 @@ Pod::Spec.new do |s|
   s.platforms    = { :ios => "12.0" }
   s.source       = { :git => package["repository"]["url"], :tag => "#{s.version}" }
 
+  # Exclude ObjC version of AdbrixReactNative (used only for SPM)
   s.source_files = "ios/**/*.{h,m,mm,swift}"
+  s.exclude_files = ["ios/AdbrixReactNative.m", "ios/AdbrixReactNative.h"]
 
   s.dependency "adbrix2.0", "3.2.3"
   s.dependency "React-Core"

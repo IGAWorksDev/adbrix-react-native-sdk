@@ -1,5 +1,16 @@
 // swift-tools-version: 5.7
+// Built through React Native's SwiftPM autolinker, which links this package at
+// <app>/build/generated/autolinking/libs/AdbrixReactNativeSdk. The relative package paths
+// resolve from there to the app's React Native xcframeworks and codegen output.
+
+import Foundation
 import PackageDescription
+
+// Exclude every root entry the target does not use to prevent resource scanning issues
+let usedRootEntries: Set<String> = ["ios", "Package.swift"]
+let unusedRootEntries = (try? FileManager.default.contentsOfDirectory(atPath: Context.packageDirectory)
+    .filter { !usedRootEntries.contains($0) }
+    .sorted()) ?? []
 
 let package = Package(
     name: "adbrix-react-native-sdk",
@@ -7,36 +18,31 @@ let package = Package(
     products: [
         .library(
             name: "AdbrixReactNativeSdk",
-            targets: ["adbrix_react_native_sdk"]
+            targets: ["AdbrixReactNativeSdk"]
         )
     ],
     dependencies: [
         .package(
             url: "https://github.com/IGAWorksDev/adbrix-ios-sdk",
             exact: "3.2.4"
-        )
+        ),
+        // React Native dependencies - resolved from autolinker symlinks
+        .package(name: "ReactNative", path: "../../../../xcframeworks"),
     ],
     targets: [
-        // Swift-only target for SPM compatibility
-        // Objective-C bridge files are handled by React Native's build system
         .target(
-            name: "adbrix_react_native_sdk",
+            name: "AdbrixReactNativeSdk",
             dependencies: [
-                .product(name: "AdbrixSDK", package: "adbrix-ios-sdk")
+                .product(name: "AdbrixSDK", package: "adbrix-ios-sdk"),
+                .product(name: "ReactHeaders", package: "ReactNative"),
+                .product(name: "ReactNativeHeaders", package: "ReactNative"),
             ],
-            path: "ios",
-            exclude: [
-                // Exclude Objective-C files (handled by RN build system)
-                "AdbrixPropertiesParser.h",
-                "AdbrixPropertiesParser.m",
-                "AdbrixReactNativeSdk.h",
-                "AdbrixReactNativeSdk.m",
-                // Exclude Xcode project
-                "AdbrixReactNativeSdk.xcodeproj"
-            ],
-            sources: ["AdbrixReactNative.swift"],
-            swiftSettings: [
-                .define("SPM_BUILD")
+            path: ".",
+            exclude: ["ios/AdbrixReactNativeSdk.xcodeproj", "ios/AdbrixReactNative.swift"] + unusedRootEntries,
+            sources: ["ios"],
+            publicHeadersPath: "ios",
+            cSettings: [
+                .headerSearchPath("ios")
             ]
         )
     ]
