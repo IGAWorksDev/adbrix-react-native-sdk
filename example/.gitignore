@@ -73,3 +73,12 @@ yarn-error.log
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+# Adbrix SDK credentials (local only)
+src/config.local.ts
+
+# SPM generated files
+ios/build/generated/
+ios/build/xcframeworks/
+ios/.build/
+ios/Package.resolved

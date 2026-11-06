@@ -3,6 +3,8 @@ import React_RCTAppDelegate
 import ReactAppDependencyProvider
 import UIKit
 
+import AdbrixReactNativeSdk
+
 class SceneDelegate: RCTDefaultReactNativeFactoryDelegate, UIWindowSceneDelegate {
   var window: UIWindow?
   var reactNativeFactory: RCTReactNativeFactory?
@@ -34,18 +36,41 @@ class SceneDelegate: RCTDefaultReactNativeFactoryDelegate, UIWindowSceneDelegate
       in: window,
       connectionOptions: connectionOptions
     )
-
-   
+    
+    // MARK: - Cold Start Deep Link Handling
+    // Handle deep link when app is launched from terminated state
+    if let url = connectionOptions.urlContexts.first?.url {
+      AdbrixReactNativeSdk.deeplinkOpen(with: url)
+    }
+    
+    // Handle universal link when app is launched from terminated state
+    if let userActivity = connectionOptions.userActivities.first(where: { $0.activityType == NSUserActivityTypeBrowsingWeb }) {
+      AdbrixReactNativeSdk.deeplinkOpen(with: userActivity)
+    }
   }
 
+  // MARK: - URL Handling (Deep Link)
+  
   func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+    // Adbrix deep link handling
+    if let url = URLContexts.first?.url {
+      AdbrixReactNativeSdk.deeplinkOpen(with: url)
+    }
+    
     RCTLinkingManager.scene(scene, openURLContexts: URLContexts)
   }
 
+  // MARK: - User Activity (Universal Link)
+  
   func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
+    // Adbrix universal link handling
+    AdbrixReactNativeSdk.deeplinkOpen(with: userActivity)
+    
     RCTLinkingManager.scene(scene, continue: userActivity)
   }
 
+  // MARK: - Bundle URL
+  
   override func bundleURL() -> URL? {
     #if DEBUG
     RCTBundleURLProvider.sharedSettings().jsBundleURL(forBundleRoot: "index")

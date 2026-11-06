@@ -23,12 +23,7 @@ import {
   requestTrackingPermission, 
   getTrackingStatus
 } from './src/TrackingTransparency';
-
-// TODO: Replace with your actual credentials
-const AdbrixConfig = {
-  applicationKey: 'YOUR_APPLICATION_KEY',
-  secretKey: 'YOUR_SECRET_KEY',
-};
+import { AdbrixConfig } from './src/config';
 
 export default function App() {
   const [sdkVersion, setSdkVersion] = useState<string>('unknown');
