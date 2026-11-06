@@ -335,8 +335,4 @@ Package.resolved
 # Kiro IDE
 .kiro/
 
-# Local example projects (not tracked)
-example_pods/
-
-# Root package-lock (library project)
 package-lock.json
