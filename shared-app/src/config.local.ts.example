@@ -1,0 +1,7 @@
+// Copy this file to config.local.ts and fill in your credentials
+// config.local.ts is git-ignored
+
+export const AdbrixConfig = {
+  applicationKey: 'your-actual-application-key',
+  secretKey: 'your-actual-secret-key',
+};

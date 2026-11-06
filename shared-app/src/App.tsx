@@ -23,6 +23,7 @@ import {
   requestTrackingPermission, 
   getTrackingStatus
 } from 'react-native-tracking-transparency';
+import { AdbrixConfig } from './config';
 
 export default function App() {
   const [attStatus, setAttStatus] = useState<string>('unknown');
@@ -39,14 +40,9 @@ export default function App() {
       [ABConfig.ANDROID_COLLECT_GOOGLE_ADVERTISING_ID]: true,
     };
 
-    // Replace with your Adbrix credentials
-    // You can set these via environment variables or a local config file
-    const applicationKey = process.env.ADBRIX_APP_KEY || 'YOUR_APPLICATION_KEY';
-    const secretKey = process.env.ADBRIX_SECRET_KEY || 'YOUR_SECRET_KEY';
-
     Adbrix.initWithConfig({
-      applicationKey,
-      secretKey,
+      applicationKey: AdbrixConfig.applicationKey,
+      secretKey: AdbrixConfig.secretKey,
       config: config,
     });
   };

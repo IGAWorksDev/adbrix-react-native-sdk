@@ -2,6 +2,9 @@
 .env
 .env.local
 
+# Local config with credentials
+src/config.local.ts
+
 # Dependencies
 node_modules/
 
