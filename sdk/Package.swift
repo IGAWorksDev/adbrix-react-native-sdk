@@ -32,11 +32,7 @@ let package = Package(
                 "AdbrixReactNativeSdk.h",
                 "AdbrixReactNativeSdk.m",
                 // Exclude Xcode project
-                "AdbrixReactNativeSdk.xcodeproj",
-                // Exclude Swift duplicate directory (if exists)
-                "swift",
-                // Exclude SPM build artifacts
-                ".swiftpm"
+                "AdbrixReactNativeSdk.xcodeproj"
             ],
             sources: ["AdbrixReactNative.swift"],
             swiftSettings: [
