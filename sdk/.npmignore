@@ -1,4 +1,31 @@
+# Examples and CI
 example/
+example_pods/
 .github/
+
+# Git
 .gitignore
+
+# iOS build artifacts
 ios/DerivedData/
+ios/*.xcodeproj/
+
+# Android build artifacts
+android/build/
+android/.gradle/
+android/local.properties
+
+# Swift Package Manager cache
+.swiftpm/
+.build/
+
+# IDE
+*.xcworkspace/
+.idea/
+
+# Node
+node_modules/
+
+# Misc
+*.log
+.DS_Store
