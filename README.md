@@ -6,7 +6,7 @@ React Native SDK for Adbrix analytics and attribution.
 
 - React Native 0.88.0+
 - iOS 15.0+ (Xcode 27+)
-- Android SDK 24+
+- Android SDK 21+
 
 ## Installation
 
