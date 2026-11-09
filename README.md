@@ -2,6 +2,12 @@
 
 React Native SDK for Adbrix analytics and attribution.
 
+## Requirements
+
+- React Native 0.88.0+
+- iOS 15.0+ (Xcode 27+)
+- Android SDK 24+
+
 ## Installation
 
 ```bash
@@ -13,6 +19,8 @@ yarn add @igaworks/adbrix-react-native-sdk
 ## iOS Setup
 
 This SDK supports both **Swift Package Manager (SPM)** and **CocoaPods** for iOS.
+
+> **Note:** [CocoaPods Specs repository will become read-only in December 2026](https://blog.cocoapods.org/CocoaPods-Specs-Repo/), so SPM is recommended for new projects.
 
 ### Swift Package Manager (Recommended for RN 0.88+)
 
@@ -41,7 +49,7 @@ cd ios && pod install
 
 ### Deep Link Handling
 
-Add deep link handling in `SceneDelegate.swift`:
+Add deep link handling in `SceneDelegate.swift`. For a complete implementation example, refer to [example app's SceneDelegate.swift](https://github.com/IGAWorksDev/adbrix-react-native-sdk/blob/main/example/ios/example/SceneDelegate.swift).
 
 **SPM:**
 ```swift
@@ -63,11 +71,33 @@ func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>)
 }
 ```
 
-> **Note:** Module name and API differ between SPM and CocoaPods.
+> **Breaking Change (v2.0.0):** Module names differ between SPM and CocoaPods. Ensure you use the correct import statement for your build system.
 
 ## Android Setup
 
 Android auto-linking is supported. No additional configuration required.
+
+### Deep Link Handling
+
+Add deep link intent-filter in `AndroidManifest.xml`:
+
+```xml
+<activity
+  android:name=".MainActivity"
+  android:launchMode="singleTask"
+  android:exported="true">
+  <intent-filter>
+      <action android:name="android.intent.action.MAIN" />
+      <category android:name="android.intent.category.LAUNCHER" />
+  </intent-filter>
+  <intent-filter>
+      <action android:name="android.intent.action.VIEW" />
+      <category android:name="android.intent.category.DEFAULT" />
+      <category android:name="android.intent.category.BROWSABLE" />
+      <data android:scheme="your_scheme" android:host="your_host" />
+  </intent-filter>
+</activity>
+```
 
 ## Usage
 
@@ -181,6 +211,12 @@ npm run ios
 |---------|-----|-----------|
 | Module Import | `import AdbrixReactNativeSdk` | `import adbrix_react_native_sdk` |
 | Deep Link API | `AdbrixReactNativeSdk.deeplinkOpen(with: url)` | `AdbrixReactNative.deepLinkOpen(url: url)` |
+
+## Documentation
+
+- [Developer Guide](https://adbrix.gitbook.io/developer-guide/platform/reactnative)
+- [User Guide](https://adbrix.gitbook.io/user-guide)
+- [Changelog](./sdk/CHANGELOG.md)
 
 ## Publishing
 
