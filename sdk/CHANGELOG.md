@@ -18,7 +18,7 @@
 
 ##### Changed
 - Android SDK updated to version 4.1.0.
-- iOS SDK updated to version 3.2.4 (SPM) / 3.2.3 (CocoaPods).
+- iOS SDK updated to version 3.2.5 (SPM) / 3.2.3 (CocoaPods).
 - iOS native module restructured for SPM/CocoaPods dual support.
 
 ##### Notes
@@ -30,7 +30,7 @@
 - Android
   - Adbrix Android SDK 4.1.0
 - iOS
-  - Adbrix iOS SDK 3.2.4 (Swift Package Manager)
+  - Adbrix iOS SDK 3.2.5 (Swift Package Manager)
   - Adbrix iOS SDK 3.2.3 (CocoaPods)
 
 ## 1.1.2 (2026-02-19)
@@ -130,7 +130,7 @@
 
 ##### 변경됨
 - Android SDK가 버전 4.1.0으로 업데이트되었습니다.
-- iOS SDK가 버전 3.2.4 (SPM) / 3.2.3 (CocoaPods)으로 업데이트되었습니다.
+- iOS SDK가 버전 3.2.5 (SPM) / 3.2.3 (CocoaPods)으로 업데이트되었습니다.
 - iOS 네이티브 모듈이 SPM/CocoaPods 듀얼 지원 구조로 재구성되었습니다.
 
 ##### 참고 사항
@@ -142,7 +142,7 @@
 - Android
   - Adbrix Android SDK 4.1.0
 - iOS
-  - Adbrix iOS SDK 3.2.4 (Swift Package Manager)
+  - Adbrix iOS SDK 3.2.5 (Swift Package Manager)
   - Adbrix iOS SDK 3.2.3 (CocoaPods)
 
 ## 1.1.2 (2026-02-19)

@@ -1,6 +1,6 @@
 {
   "name": "@igaworks/adbrix-react-native-sdk",
-  "version": "2.0.0",
+  "version": "2.0.0-alpha.5",
   "description": "This is Official Adbrix 2.0 SDK for React Native.",
   "main": "src/index.js",
   "types": "src/index.d.ts",

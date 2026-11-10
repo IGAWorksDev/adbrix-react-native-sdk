@@ -24,7 +24,7 @@ let package = Package(
     dependencies: [
         .package(
             url: "https://github.com/IGAWorksDev/adbrix-ios-sdk",
-            exact: "3.2.4"
+            exact: "3.2.5"
         ),
         // React Native dependencies - resolved from autolinker symlinks
         .package(name: "ReactNative", path: "../../../../xcframeworks"),
