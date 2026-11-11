@@ -1,7 +1,7 @@
 <details open>
 <summary>EN</summary>
 
-## 2.0.0 (2026-11-09)
+## 2.0.0 (2026-11-11)
 
 ##### Breaking Changes
 - Minimum React Native version upgraded from 0.76.0 to 0.88.0.
@@ -113,7 +113,7 @@
 <details open>
 <summary>KO</summary>
 
-## 2.0.0 (2026-11-09)
+## 2.0.0 (2026-11-11)
 
 ##### 주요 변경사항 (Breaking Changes)
 - React Native 최소 버전이 0.76.0에서 0.88.0으로 업그레이드되었습니다.

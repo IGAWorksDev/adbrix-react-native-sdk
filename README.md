@@ -5,8 +5,9 @@ React Native SDK for Adbrix analytics and attribution.
 ## Requirements
 
 - React Native 0.88.0+
+- Node.js 22.13.0+
 - iOS 15.0+ (Xcode 27+)
-- Android SDK 21+
+- Android SDK 21+ (compileSdk 35+, Kotlin 2.0+)
 
 ## Installation
 
@@ -24,11 +25,14 @@ This SDK supports both **Swift Package Manager (SPM)** and **CocoaPods** for iOS
 
 ### Swift Package Manager (Recommended for RN 0.88+)
 
-SPM is the default for React Native 0.88+. No additional configuration required.
+SPM support is experimental in React Native 0.88 and planned to become the default in 0.89. For SPM-enabled projects:
 
 ```bash
-cd ios
-# SPM setup runs automatically via postinstall
+# Initial setup (removes CocoaPods, switches to SPM)
+npx react-native spm --deintegrate
+
+# After fresh clone or in CI
+npx react-native spm
 ```
 
 ### CocoaPods
@@ -144,7 +148,7 @@ const item = ABItem()
   .productName('Premium Plan')
   .price(9900)
   .quantity(1)
-  .currency('KRW')
+  .currency(ABCurrency.KRW)
   .build();
 
 Adbrix.logEvent({
@@ -183,7 +187,7 @@ if (result) {
 
 | Directory | Build System | iOS SDK Version | Theme |
 |-----------|--------------|-----------------|-------|
-| `example/` | SPM | 3.2.4 | Blue |
+| `example/` | SPM | 3.2.5 | Blue |
 | `example_pods/` | CocoaPods | 3.2.3 | Green |
 
 Both examples demonstrate proper SDK integration for their respective build systems.
@@ -217,13 +221,6 @@ npm run ios
 - [Developer Guide](https://adbrix.gitbook.io/developer-guide/platform/reactnative)
 - [User Guide](https://adbrix.gitbook.io/user-guide)
 - [Changelog](./sdk/CHANGELOG.md)
-
-## Publishing
-
-```bash
-cd sdk
-npm publish --access public
-```
 
 ## License
 

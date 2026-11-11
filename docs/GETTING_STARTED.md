@@ -12,7 +12,7 @@ React Native 프로젝트에 Adbrix SDK를 연동하는 단계별 가이드입�
 # Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-# Node.js, Watchman
+# Node.js 22.13.0+, Watchman
 brew install node watchman
 ```
 
@@ -23,7 +23,8 @@ brew install node watchman
 ### Android
 
 - [Android Studio](https://developer.android.com/studio) 설치
-- SDK Manager에서 Android SDK Platform 34 설치
+- SDK Manager에서 Android SDK Platform 35 설치
+- Kotlin 2.0+
 
 환경 변수 (`~/.zshrc`):
 
@@ -40,7 +41,7 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 | 디렉토리 | iOS 빌드 방식 | 설명 |
 |---------|-------------|------|
-| `example/` | SPM | 신규 프로젝트 권장 |
+| `example/` | SPM (experimental) | 신규 프로젝트 권장 |
 | `example_pods/` | CocoaPods | 레거시 프로젝트용 |
 
 ```bash
@@ -182,7 +183,7 @@ npm run android  # Android
 
 | 문제 | 해결 |
 |-----|------|
-| SPM 빌드 오류 | `cd ios && rm -rf build && npx react-native spm add --yes` |
+| SPM 빌드 오류 | `cd ios && rm -rf build && npx react-native spm` |
 | CocoaPods 빌드 오류 | `cd ios && rm -rf Pods Podfile.lock && pod install` |
 | Android 빌드 오류 | `cd android && ./gradlew clean` |
 

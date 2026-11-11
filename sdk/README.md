@@ -21,7 +21,7 @@ This SDK supports both **Swift Package Manager (SPM)** and **CocoaPods**:
 
 | Build System | iOS SDK Version | Module Import |
 |--------------|-----------------|---------------|
-| SPM (RN 0.88+) | 3.2.5 | `import AdbrixReactNativeSdk` |
+| SPM (RN 0.88+ experimental) | 3.2.5 | `import AdbrixReactNativeSdk` |
 | CocoaPods | 3.2.3 | `import adbrix_react_native_sdk` |
 
 ## Dependencies
