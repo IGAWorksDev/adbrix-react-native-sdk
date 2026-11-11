@@ -64,7 +64,7 @@ cd MyProject
 ## SDK 설치
 
 ```bash
-npm install @igaworks/adbrix-react-native-sdk@2.0.0-alpha.5
+npm install @igaworks/adbrix-react-native-sdk
 ```
 
 > 정식 버전 출시 후에는 버전 태그 없이 설치 가능합니다.
