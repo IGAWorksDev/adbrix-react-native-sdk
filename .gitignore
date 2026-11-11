@@ -326,3 +326,13 @@ $RECYCLE.BIN/
 .yarn/releases/yarn-3.6.1.cjs
 
 *.lock
+
+# Swift Package Manager
+.build/
+.swiftpm/
+Package.resolved
+
+# Kiro IDE
+.kiro/
+
+package-lock.json
